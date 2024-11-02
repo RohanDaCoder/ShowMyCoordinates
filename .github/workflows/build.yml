@@ -1,4 +1,4 @@
-name: Build and Release JAR
+name: Build DEV Jars
 
 on: 
   push:
@@ -6,51 +6,27 @@ on:
       - master
 
 jobs:
-  build:
+  build_dev_jars:
+    name: Build DEV jars
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - name: Setup JDK
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '17'
-
       - name: Build with Maven
         run: |
           mvn clean package
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo "git_hash=$git_hash" >> $GITHUB_ENV
           echo "artifactPath=$(pwd)/target" >> $GITHUB_ENV
-
-      - name: Upload Plugin JAR Artifact
+      - name: Upload Plugin jar
         uses: actions/upload-artifact@v3
         with:
           name: show-my-coordinates-${{ env.git_hash }}.jar
           path: ${{ env.artifactPath }}/show-my-coordinates-*.jar
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: release-${{ github.sha }}
-          release_name: Release ${{ github.sha }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Artifact
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/${{ env.artifactPath }}/show-my-coordinates-*.jar
-          asset_name: show-my-coordinates-${{ env.git_hash }}.jar
-          asset_content_type: application/java-archive
