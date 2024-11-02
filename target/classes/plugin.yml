@@ -1,0 +1,12 @@
+name: ShowMyCoordinates
+version: '1.0'
+author: RohanDaCoder
+main: me.rohandacoder.showMyCoordinates.ShowMyCoordinates
+api-version: '1.20'
+commands:
+  ping:
+    description: Pong!
+    usage: /ping
+  show:
+    description: Shows Your Coordinates In The Chat.
+    aliases: [ s, showc, showcoordinates, showmycoordinates, sc ]

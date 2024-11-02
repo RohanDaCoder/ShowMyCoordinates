@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="show-my-coordinates:jar">
+    <output-path>$USER_HOME$/Desktop/Plugin Testing/plugins</output-path>
+    <root id="archive" name="show-my-coordinates.jar">
+      <element id="module-output" name="show-my-coordinates" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.1.0/annotations-24.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/2.0.21/kotlin-stdlib-2.0.21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/2.0.21/kotlin-stdlib-jdk7-2.0.21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/2.0.21/kotlin-stdlib-jdk8-2.0.21.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
