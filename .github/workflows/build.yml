@@ -25,7 +25,7 @@ jobs:
       - name: Upload JAR to GitHub Releases
         uses: softprops/action-gh-release@v1
         with:
-          tag: ${{ github.sha }}
+          tag_name: ${{ github.sha }}
           files: target/show-my-coordinates-*.jar
           name: show-my-coordinates-${{ github.sha }}.jar
           body: |
